@@ -1,0 +1,11 @@
+#pic {
+    margin: 10px;
+    box-shadow: 0 -50px 100px rgba(200, 200, 255, 0.4);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-radius: 10px;
+}
+
+.youtube{
+    margin-top: 20px;
+}

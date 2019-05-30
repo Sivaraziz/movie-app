@@ -8,17 +8,19 @@ class Movie extends React.Component {
     }
 
     state = {
-        data: null,
+      youtube: null,
     };
 
     callApi = () => {
-        const data = <Youtube key={this.id} title={this.props.movie.title} callApi={this.callApi} />
+        if (!this.state.toggleTrailer) {
+          const data = <Youtube key={this.id} title={this.props.movie.title} movie={this.props.movie} callApi={this.callApi} />
 
-        this.setState({ data });
+          this.setState({ youtube: data, toggleTrailer: true });
+        } else {
+          this.setState({ youtube: null, toggleTrailer: false });
+        }
     }
-    
-
-
+  
     render() {
         return (
         <div>
@@ -26,7 +28,9 @@ class Movie extends React.Component {
         <tbody>
           <tr>
             <td>
-              <img id="pic" alt="poster" width="120" src={this.props.movie.poster_src}/>
+              <div class="pic_box">
+                <img id="pic" alt="poster" width="120" src={this.props.movie.poster_src}/>
+              </div>
             </td>
             <td>
               <h4>{this.props.movie.title}</h4>
@@ -37,7 +41,7 @@ class Movie extends React.Component {
           </tr>
          </tbody>
         </table>
-        {this.state.data}
+        {this.state.youtube}
         </div>
     );
     }

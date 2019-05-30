@@ -27,7 +27,7 @@ class App extends Component {
     //
     // this.state = {rows: movieRows}
 
-    this.performSearch()
+    this.performSearch();
   }
   performSearch(searchTerm) {
       const urlString = "https://api.themoviedb.org/3/search/movie?&api_key=9fecf79019c1e5aaa1776266fb8e4fcd&query=" + searchTerm
@@ -68,31 +68,9 @@ class App extends Component {
   render() {
       return (
         <div>
-          <table style={{
-              backgroundColor: '#000',
-              display: 'block',
-              color: '#fff',
-              paddingLeft: 30,
-          }}>
-            <tbody>
-              <tr>
-                <td>
-                </td>
-                <td width="50"/>
-                <td>
-                  <h1>Movies</h1>
-                </td>
-              </tr>
-             </tbody>
-           </table>
+           <h1>Movies</h1>
 
-           <input style={{
-               fontSize: 22,
-               width: '100%',
-               paddingLeft: 90,
-               paddingBottom: 8,
-               paddingTop: 8
-           }} onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search..."/>
+           <input className="search_bar" onChange={this.searchChangeHandler.bind(this)} placeholder="Enter search..."/>
 
            {this.state.rows}
 

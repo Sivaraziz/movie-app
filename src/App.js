@@ -43,8 +43,11 @@ class App extends Component {
 
               results.forEach((movie) => {
                   console.log(movie.poster_path);
+                  var rating = JSON.parse(localStorage.getItem("ratings"));
+                  rating = rating["movie_rate_" + movie.id];
+
                   movie.poster_src = "http://image.tmdb.org/t/p/w185" + movie.poster_path
-                  const movieRow = <Movie key={movie.id} movie={movie}/>
+                  const movieRow = <Movie key={movie.id} movie={movie} rating={rating}/>
                   movieRows.push(movieRow)
               })
 

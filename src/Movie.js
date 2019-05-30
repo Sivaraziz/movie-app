@@ -1,5 +1,7 @@
 import React from 'react'
 import Youtube from './Youtube.js';
+import $ from 'jquery';
+import StarRatingComponent from 'react-star-rating-component';
 
 class Movie extends React.Component {
     viewMovie() {
@@ -9,6 +11,7 @@ class Movie extends React.Component {
 
     state = {
       youtube: null,
+      rating: this.props.rating
     };
 
     callApi = () => {
@@ -20,9 +23,21 @@ class Movie extends React.Component {
           this.setState({ youtube: null, toggleTrailer: false });
         }
     }
-  
+
+    onStarClick(nextValue, prevValue, name) {
+      var currentRatings = JSON.parse(localStorage.getItem("ratings"));
+      currentRatings[name] = nextValue;
+      
+      localStorage.setItem("ratings", JSON.stringify(currentRatings));
+      this.setState({rating: currentRatings[name]});
+      console.log(this.state.rating);
+    }
+
     render() {
-        return (
+      const { rating } = this.state;
+      var rateName = "movie_rate_" + this.props.movie.id;
+
+      return (
         <div>
         <table key={this.props.movie.id}>
         <tbody>
@@ -37,6 +52,12 @@ class Movie extends React.Component {
               <p> {this.props.movie.overview} </p>
               <input id="view" type="button" style={{backgroundColor: 'green'}} onClick={this.viewMovie.bind(this)} value="View"/>
               <input id="trailer" type="button" style={{backgroundColor: 'grey'}} onClick={this.callApi} value="Trailer"/>
+              <StarRatingComponent 
+                name={rateName}
+                starCount={5}
+                value={rating}
+                onStarClick={this.onStarClick.bind(this)}
+              />
             </td>
           </tr>
          </tbody>

@@ -43,7 +43,7 @@ class Movie extends React.Component {
         <tbody>
           <tr>
             <td>
-              <div class="pic_box">
+              <div className="pic_box">
                 <img id="pic" alt="poster" width="120" src={this.props.movie.poster_src}/>
               </div>
             </td>

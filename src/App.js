@@ -8,6 +8,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+
+    if (localStorage.getItem("ratings")) {
+        console.log("HAS LOCAL STORAGE");
+    } else {
+        console.log("DOES NOT HAVE LOCAL STORAGE");
+        localStorage.setItem("ratings", JSON.stringify({}));
+    }
     console.log("this is")
 
     // const movies = [

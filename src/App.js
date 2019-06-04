@@ -49,14 +49,11 @@ class App extends Component {
               var movieRows = []
 
               results.forEach((movie) => {
-                  movie.poster_src = "http://image.tmdb.org/t/p/w185" + movie.poster_path
-                  if (movie.poster_path == null) {
-                      movie.poster_src = "https://via.placeholder.com/80x120"
-                  }
                   console.log(movie.poster_path);
                   var rating = JSON.parse(localStorage.getItem("ratings"));
                   rating = rating["movie_rate_" + movie.id];
 
+                  movie.poster_src = "http://image.tmdb.org/t/p/w185" + movie.poster_path
                   const movieRow = <Movie key={movie.id} movie={movie} rating={rating}/>
                   movieRows.push(movieRow)
               })

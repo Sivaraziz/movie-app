@@ -39,16 +39,12 @@ class Movie extends React.Component {
 
       return (
         <div>
-        <table key={this.props.movie.id}>
-        <tbody>
-          <tr>
-            <td>
+        <table key={this.props.movie.id}></table>
               <div className="pic_box">
-                <img id="pic" alt="poster" width="120" src={this.props.movie.poster_src}/>
-              </div>
-            </td>
-            <td>
               <h4>{this.props.movie.title}</h4>
+                <figure><img id="pic" alt="poster" width="" src={this.props.movie.poster_src}/></figure>
+              
+              </div>
               <p> {this.props.movie.overview} </p>
               <input id="view" type="button" style={{backgroundColor: 'green'}} onClick={this.viewMovie.bind(this)} value="View"/>
               <input id="trailer" type="button" style={{backgroundColor: 'grey'}} onClick={this.callApi} value="Trailer"/>
@@ -58,12 +54,9 @@ class Movie extends React.Component {
                 value={rating}
                 onStarClick={this.onStarClick.bind(this)}
               />
-            </td>
-          </tr>
-         </tbody>
-        </table>
         {this.state.youtube}
         </div>
+        
     );
     }
 }

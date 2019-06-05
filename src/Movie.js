@@ -52,6 +52,7 @@ class Movie extends React.Component {
                 name={rateName}
                 starCount={5}
                 value={rating}
+                style="font-size: 30px;"
                 onStarClick={this.onStarClick.bind(this)}
               />
         {this.state.youtube}
